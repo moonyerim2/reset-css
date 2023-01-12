@@ -1,0 +1,89 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+/* set up the body */
+body {
+  line-height: 1.5;
+  /* 스크롤링 이슈를 막기위해 한다고 함 */
+  min-height: 100vh;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form element easier to work with */
+/* 아래 요소들은 기본적으로 font 프로퍼티가 상속되지 않는다 */
+/* 그래서 상속되도록 리셋해줌 */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+/* os나 브라우저 단에서 애니메이션을 제거할 경우 */
+/* 시각적으로 애니메이션에 영향을 받아 문제가 되는 사람들을 위한 접근성읠 위함 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------ */
+/* Utility classes          */
+/* ------------------------ */
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.container {
+  /* 새로운 css 프로퍼티 */
+  /* 양 옆 터치 영역을 위함 */
+  /* padding: 0 2em; 와 동일*/
+  padding-inline: 2em;
+  /* 뭔가 충돌을 막아준다고 함..... */
+  margin-inline: auto;
+  max-width: 80rem;
+}
+
+/* screen reader only */
+/* 컨텐트가 그 위치에 존재하지만 시각적으로 숨기기 위함 */
+/* 그래야 시각적으로 보이진 않지만 스크린 리더가 읽어서 접근성을 유지할 수 있다. */
+/* ex) 내부에 텍스트를 가지고 있지 않은 버튼을 위함 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
